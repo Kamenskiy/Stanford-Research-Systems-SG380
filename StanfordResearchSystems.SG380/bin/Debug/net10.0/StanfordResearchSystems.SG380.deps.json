@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "StanfordResearchSystems.SG380/1.0.0": {
+        "runtime": {
+          "StanfordResearchSystems.SG380.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "StanfordResearchSystems.SG380/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

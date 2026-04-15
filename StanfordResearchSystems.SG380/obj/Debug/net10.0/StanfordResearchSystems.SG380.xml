@@ -1,0 +1,1136 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StanfordResearchSystems.SG380</name>
+    </assembly>
+    <members>
+        <member name="T:StanfordResearchSystems.SG380.Sg380Client">
+            <summary>
+            Клиент для управления RF-генераторами SG382, SG384, SG386 по протоколу TCP/IP.
+            </summary>
+        </member>
+        <member name="P:StanfordResearchSystems.SG380.Sg380Client.IpAddress">
+            <summary>
+            IP-адрес генератора.
+            </summary>
+        </member>
+        <member name="P:StanfordResearchSystems.SG380.Sg380Client.Port">
+            <summary>
+            TCP-порт генератора.
+            </summary>
+        </member>
+        <member name="P:StanfordResearchSystems.SG380.Sg380Client.TimeoutMs">
+            <summary>
+            Таймаут операций в миллисекундах. По умолчанию 5000.
+            </summary>
+        </member>
+        <member name="P:StanfordResearchSystems.SG380.Sg380Client.IsConnected">
+            <summary>
+            Указывает, установлено ли соединение.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.#ctor(System.String,System.Int32)">
+            <summary>
+            Создаёт новый экземпляр клиента.
+            </summary>
+            <param name="ipAddress">IP-адрес генератора.</param>
+            <param name="port">TCP-порт (по умолчанию 5025).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.Connect">
+            <summary>
+            Устанавливает соединение с генератором (синхронно).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.ConnectAsync(System.Threading.CancellationToken)">
+            <summary>
+            Устанавливает соединение с генератором (асинхронно).
+            </summary>
+            <param name="cancellationToken">Токен отмены операции.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.Disconnect">
+            <summary>
+            Разрывает соединение.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SendCommand(System.String)">
+            <summary>
+            Отправляет команду без ожидания ответа (синхронно).
+            </summary>
+            <param name="command">Строка команды (должна заканчиваться символом новой строки).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SendCommandAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Отправляет команду без ожидания ответа (асинхронно).
+            </summary>
+            <param name="command">Строка команды (должна заканчиваться символом новой строки).</param>
+            <param name="cancellationToken">Токен отмены.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SendQuery(System.String)">
+            <summary>
+            Отправляет запрос и возвращает ответ (синхронно).
+            </summary>
+            <param name="query">Строка запроса (должна заканчиваться символом новой строки).</param>
+            <returns>Строка ответа без завершающих символов.</returns>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SendQueryAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Отправляет запрос и возвращает ответ (асинхронно).
+            </summary>
+            <param name="query">Строка запроса (должна заканчиваться символом новой строки).</param>
+            <param name="cancellationToken">Токен отмены.</param>
+            <returns>Строка ответа без завершающих символов.</returns>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.Dispose">
+            <summary>
+            Освобождает ресурсы.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetIdentity">
+            <summary>
+            Возвращает строку идентификации прибора (производитель, модель, серийный номер, версия прошивки).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetIdentityAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetIdentity"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetIdentityInfo">
+            <summary>
+            Возвращает разобранную информацию идентификации.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetIdentityInfoAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetIdentityInfo"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.Reset">
+            <summary>
+            Сбрасывает прибор в настройки по умолчанию.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.ResetAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.Reset"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.ClearStatus">
+            <summary>
+            Очищает регистры событий и буфер ошибок.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.ClearStatusAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.ClearStatus"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetStandardEventEnable">
+            <summary>
+            Возвращает текущее значение маски регистра событий стандартного статуса.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetStandardEventEnable(System.Int32)">
+            <summary>
+            Устанавливает маску регистра событий стандартного статуса.
+            </summary>
+            <param name="mask">Битовая маска.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetStandardEventEnableAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetStandardEventEnable"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetStandardEventEnableAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetStandardEventEnable(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetStandardEventRegister">
+            <summary>
+            Возвращает и очищает регистр событий стандартного статуса.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetStandardEventRegisterAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetStandardEventRegister"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPowerOnStatusClear">
+            <summary>
+            Возвращает флаг очистки регистров при включении питания.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPowerOnStatusClear(System.Int32)">
+            <summary>
+            Устанавливает флаг очистки регистров при включении питания.
+            </summary>
+            <param name="value">0 – сохранять *SRE и *ESE, 1 – очищать при включении.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPowerOnStatusClearAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetPowerOnStatusClear"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPowerOnStatusClearAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetPowerOnStatusClear(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SaveSettings(System.Int32)">
+            <summary>
+            Сохраняет текущие настройки в ячейку энергонезависимой памяти (0–9). Ячейка 0 зарезервирована.
+            </summary>
+            <param name="location">Номер ячейки (0–9).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SaveSettingsAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SaveSettings(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.RecallSettings(System.Int32)">
+            <summary>
+            Восстанавливает настройки из ячейки памяти (0–9). Ячейка 0 соответствует настройкам по умолчанию.
+            </summary>
+            <param name="location">Номер ячейки (0–9).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.RecallSettingsAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.RecallSettings(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetServiceRequestEnable">
+            <summary>
+            Возвращает текущее значение маски регистра обслуживания (SRE).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetServiceRequestEnable(System.Int32)">
+            <summary>
+            Устанавливает маску регистра обслуживания (SRE).
+            </summary>
+            <param name="mask">Битовая маска.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetServiceRequestEnableAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetServiceRequestEnable"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetServiceRequestEnableAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetServiceRequestEnable(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetStatusByte">
+            <summary>
+            Возвращает байт статуса (STB). Регистр не очищается.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetStatusByteAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetStatusByte"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.OperationComplete">
+            <summary>
+            Ожидает завершения всех предыдущих команд.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.OperationCompleteAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.OperationComplete"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SelfTest">
+            <summary>
+            Запускает самотест прибора. Возвращает true, если тест пройден успешно.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SelfTestAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SelfTest"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.Trigger">
+            <summary>
+            Генерирует триггер для режима списка.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.TriggerAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.Trigger"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetFrequency(System.Double)">
+            <summary>
+            Устанавливает частоту выходного сигнала (в герцах).
+            </summary>
+            <param name="frequencyHz">Частота в Гц.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetFrequencyAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetFrequency(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetFrequency">
+            <summary>
+            Возвращает текущее значение частоты (Гц).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetFrequencyAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetFrequency"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPhase(System.Double)">
+            <summary>
+            Устанавливает фазу выходного сигнала (в градусах).
+            </summary>
+            <param name="degrees">Значение фазы в градусах (±360°).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPhaseAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetPhase(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPhase">
+            <summary>
+            Возвращает текущее значение фазы (градусы).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPhaseAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetPhase"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.RelPhase">
+            <summary>
+            Сбрасывает отображаемую фазу в 0° без изменения реального фазового сдвига.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.RelPhaseAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.RelPhase"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetBncAmplitude(System.Double,StanfordResearchSystems.SG380.Enums.AmplitudeUnit)">
+            <summary>
+            Устанавливает амплитуду BNC‑выхода.
+            </summary>
+            <param name="value">Числовое значение.</param>
+            <param name="unit">Единица измерения: dBm, rms или Vpp.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetBncAmplitudeAsync(System.Double,StanfordResearchSystems.SG380.Enums.AmplitudeUnit,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetBncAmplitude(System.Double,StanfordResearchSystems.SG380.Enums.AmplitudeUnit)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetBncAmplitude(StanfordResearchSystems.SG380.Enums.AmplitudeUnit)">
+            <summary>
+            Возвращает амплитуду BNC‑выхода.
+            </summary>
+            <param name="unit">Желаемая единица измерения.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetBncAmplitudeAsync(StanfordResearchSystems.SG380.Enums.AmplitudeUnit,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetBncAmplitude(StanfordResearchSystems.SG380.Enums.AmplitudeUnit)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetTypeNAmplitude(System.Double,StanfordResearchSystems.SG380.Enums.AmplitudeUnit)">
+            <summary>
+            Устанавливает амплитуду Type‑N выхода.
+            </summary>
+            <param name="value">Числовое значение.</param>
+            <param name="unit">Единица измерения: dBm, rms или Vpp.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetTypeNAmplitudeAsync(System.Double,StanfordResearchSystems.SG380.Enums.AmplitudeUnit,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetTypeNAmplitude(System.Double,StanfordResearchSystems.SG380.Enums.AmplitudeUnit)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetTypeNAmplitude(StanfordResearchSystems.SG380.Enums.AmplitudeUnit)">
+            <summary>
+            Возвращает амплитуду Type‑N выхода.
+            </summary>
+            <param name="unit">Желаемая единица измерения.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetTypeNAmplitudeAsync(StanfordResearchSystems.SG380.Enums.AmplitudeUnit,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetTypeNAmplitude(StanfordResearchSystems.SG380.Enums.AmplitudeUnit)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetClockAmplitude(System.Double)">
+            <summary>
+            Устанавливает амплитуду дифференциальных часов (опция 1) в Вольтах пик‑пик.
+            </summary>
+            <param name="valueVpp">Амплитуда в Vpp.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetClockAmplitudeAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetClockAmplitude(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetClockAmplitude">
+            <summary>
+            Возвращает амплитуду дифференциальных часов (опция 1) в Vpp.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetClockAmplitudeAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetClockAmplitude"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetDoublerAmplitude(System.Double,StanfordResearchSystems.SG380.Enums.AmplitudeUnit)">
+            <summary>
+            Устанавливает амплитуду выхода удвоителя (опция 2).
+            </summary>
+            <param name="value">Числовое значение.</param>
+            <param name="unit">Единица измерения: dBm, rms или Vpp.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetDoublerAmplitudeAsync(System.Double,StanfordResearchSystems.SG380.Enums.AmplitudeUnit,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetDoublerAmplitude(System.Double,StanfordResearchSystems.SG380.Enums.AmplitudeUnit)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetDoublerAmplitude(StanfordResearchSystems.SG380.Enums.AmplitudeUnit)">
+            <summary>
+            Возвращает амплитуду выхода удвоителя (опция 2).
+            </summary>
+            <param name="unit">Желаемая единица измерения.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetDoublerAmplitudeAsync(StanfordResearchSystems.SG380.Enums.AmplitudeUnit,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetDoublerAmplitude(StanfordResearchSystems.SG380.Enums.AmplitudeUnit)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetBncOffset(System.Double)">
+            <summary>
+            Устанавливает постоянное смещение BNC‑выхода (вольты).
+            </summary>
+            <param name="volts">Напряжение смещения в вольтах.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetBncOffsetAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetBncOffset(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetBncOffset">
+            <summary>
+            Возвращает постоянное смещение BNC‑выхода (вольты).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetBncOffsetAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetBncOffset"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetClockOffset(System.Double)">
+            <summary>
+            Устанавливает постоянное смещение дифференциальных часов (опция 1) в вольтах.
+            </summary>
+            <param name="volts">Напряжение смещения в вольтах.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetClockOffsetAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetClockOffset(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetClockOffset">
+            <summary>
+            Возвращает постоянное смещение дифференциальных часов (опция 1) в вольтах.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetClockOffsetAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetClockOffset"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetRearDcOffset(System.Double)">
+            <summary>
+            Устанавливает выход постоянного напряжения на задней панели (опция 2) в вольтах.
+            </summary>
+            <param name="volts">Напряжение в вольтах.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetRearDcOffsetAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetRearDcOffset(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetRearDcOffset">
+            <summary>
+            Возвращает выход постоянного напряжения на задней панели (опция 2) в вольтах.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetRearDcOffsetAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetRearDcOffset"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableBncOutput(System.Boolean)">
+            <summary>
+            Включает или отключает BNC‑выход.
+            </summary>
+            <param name="enable">true – включить, false – отключить.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableBncOutputAsync(System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.EnableBncOutput(System.Boolean)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsBncOutputEnabled">
+            <summary>
+            Возвращает состояние BNC‑выхода.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsBncOutputEnabledAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.IsBncOutputEnabled"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableTypeNOutput(System.Boolean)">
+            <summary>
+            Включает или отключает Type‑N выход.
+            </summary>
+            <param name="enable">true – включить, false – отключить.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableTypeNOutputAsync(System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.EnableTypeNOutput(System.Boolean)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsTypeNOutputEnabled">
+            <summary>
+            Возвращает состояние Type‑N выхода.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsTypeNOutputEnabledAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.IsTypeNOutputEnabled"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableClockOutput(System.Boolean)">
+            <summary>
+            Включает или отключает выход дифференциальных часов (опция 1).
+            </summary>
+            <param name="enable">true – включить, false – отключить.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableClockOutputAsync(System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.EnableClockOutput(System.Boolean)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsClockOutputEnabled">
+            <summary>
+            Возвращает состояние выхода дифференциальных часов.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsClockOutputEnabledAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.IsClockOutputEnabled"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableDoublerOutput(System.Boolean)">
+            <summary>
+            Включает или отключает выход удвоителя (опция 2).
+            </summary>
+            <param name="enable">true – включить, false – отключить.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableDoublerOutputAsync(System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.EnableDoublerOutput(System.Boolean)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsDoublerOutputEnabled">
+            <summary>
+            Возвращает состояние выхода удвоителя.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsDoublerOutputEnabledAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.IsDoublerOutputEnabled"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetNoiseMode(System.Int32)">
+            <summary>
+            Устанавливает режим шума PLL (1 или 2) для оптимизации фазового шума.
+            </summary>
+            <param name="mode">1 – оптимизация вблизи несущей, 2 – оптимизация для отстроек > 100 кГц.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetNoiseModeAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetNoiseMode(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetNoiseMode">
+            <summary>
+            Возвращает текущий режим шума PLL.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetNoiseModeAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetNoiseMode"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableModulation(System.Boolean)">
+            <summary>
+            Включает или отключает модуляцию.
+            </summary>
+            <param name="enable">true – включить, false – отключить.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableModulationAsync(System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.EnableModulation(System.Boolean)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsModulationEnabled">
+            <summary>
+            Возвращает состояние модуляции.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsModulationEnabledAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.IsModulationEnabled"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationType(StanfordResearchSystems.SG380.Enums.ModulationType)">
+            <summary>
+            Устанавливает тип модуляции.
+            </summary>
+            <param name="type">Тип модуляции (AM, FM, ΦM, Sweep, Pulse, Blank, IQ).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationTypeAsync(StanfordResearchSystems.SG380.Enums.ModulationType,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationType(StanfordResearchSystems.SG380.Enums.ModulationType)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationType">
+            <summary>
+            Возвращает текущий тип модуляции.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationTypeAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationType"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationFunction(StanfordResearchSystems.SG380.Enums.ModulationFunction)">
+            <summary>
+            Устанавливает функцию модуляции для AM/FM/ΦM.
+            </summary>
+            <param name="function">Функция: синус, пила, треугольник, меандр, шум, внешний источник.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationFunctionAsync(StanfordResearchSystems.SG380.Enums.ModulationFunction,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationFunction(StanfordResearchSystems.SG380.Enums.ModulationFunction)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationFunction">
+            <summary>
+            Возвращает текущую функцию модуляции для AM/FM/ΦM.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationFunctionAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationFunction"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationRate(System.Double)">
+            <summary>
+            Устанавливает частоту модуляции (Гц) для AM/FM/ΦM.
+            </summary>
+            <param name="rateHz">Частота модуляции в Гц.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationRateAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationRate(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationRate">
+            <summary>
+            Возвращает частоту модуляции (Гц) для AM/FM/ΦM.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationRateAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationRate"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetAmDepth(System.Double)">
+            <summary>
+            Устанавливает глубину амплитудной модуляции (AM) в процентах.
+            </summary>
+            <param name="percent">Глубина модуляции (0–100%).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetAmDepthAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetAmDepth(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetAmDepth">
+            <summary>
+            Возвращает глубину AM в процентах.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetAmDepthAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetAmDepth"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetAmNoiseDepth(System.Double)">
+            <summary>
+            Устанавливает глубину шумовой амплитудной модуляции (ANDP) в процентах.
+            </summary>
+            <param name="percent">Глубина модуляции (0–100%).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetAmNoiseDepthAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetAmNoiseDepth(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetAmNoiseDepth">
+            <summary>
+            Возвращает глубину шумовой AM в процентах.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetAmNoiseDepthAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetAmNoiseDepth"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetFmDeviation(System.Double)">
+            <summary>
+            Устанавливает девиацию частотной модуляции (FM) в герцах.
+            </summary>
+            <param name="deviationHz">Девиация в Гц.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetFmDeviationAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetFmDeviation(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetFmDeviation">
+            <summary>
+            Возвращает девиацию FM в герцах.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetFmDeviationAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetFmDeviation"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetFmNoiseDeviation(System.Double)">
+            <summary>
+            Устанавливает среднеквадратичную девиацию шумовой FM (FNDV) в герцах.
+            </summary>
+            <param name="deviationHz">Среднеквадратичная девиация в Гц.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetFmNoiseDeviationAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetFmNoiseDeviation(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetFmNoiseDeviation">
+            <summary>
+            Возвращает среднеквадратичную девиацию шумовой FM в герцах.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetFmNoiseDeviationAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetFmNoiseDeviation"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPhaseDeviation(System.Double)">
+            <summary>
+            Устанавливает девиацию фазовой модуляции (ΦM) в градусах.
+            </summary>
+            <param name="degrees">Девиация в градусах.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPhaseDeviationAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetPhaseDeviation(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPhaseDeviation">
+            <summary>
+            Возвращает девиацию ΦM в градусах.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPhaseDeviationAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetPhaseDeviation"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPhaseNoiseDeviation(System.Double)">
+            <summary>
+            Устанавливает среднеквадратичную девиацию шумовой ΦM (PNDV) в градусах.
+            </summary>
+            <param name="degrees">Среднеквадратичная девиация в градусах.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPhaseNoiseDeviationAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetPhaseNoiseDeviation(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPhaseNoiseDeviation">
+            <summary>
+            Возвращает среднеквадратичную девиацию шумовой ΦM в градусах.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPhaseNoiseDeviationAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetPhaseNoiseDeviation"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetSweepFunction(StanfordResearchSystems.SG380.Enums.SweepFunction)">
+            <summary>
+            Устанавливает функцию Sweep (синус, пила, треугольник, внешний).
+            </summary>
+            <param name="function">Функция модуляции.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetSweepFunctionAsync(StanfordResearchSystems.SG380.Enums.SweepFunction,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetSweepFunction(StanfordResearchSystems.SG380.Enums.SweepFunction)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetSweepFunction">
+            <summary>
+            Возвращает текущую функцию Sweep.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetSweepFunctionAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetSweepFunction"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetSweepRate(System.Double)">
+            <summary>
+            Устанавливает скорость Sweep (Гц).
+            </summary>
+            <param name="rateHz">Скорость качания частоты в Гц.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetSweepRateAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetSweepRate(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetSweepRate">
+            <summary>
+            Возвращает скорость Sweep (Гц).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetSweepRateAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetSweepRate"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetSweepDeviation(System.Double)">
+            <summary>
+            Устанавливает девиацию Sweep (Гц).
+            </summary>
+            <param name="deviationHz">Девиация частоты в Гц.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetSweepDeviationAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetSweepDeviation(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetSweepDeviation">
+            <summary>
+            Возвращает девиацию Sweep (Гц).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetSweepDeviationAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetSweepDeviation"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPulseFunction(StanfordResearchSystems.SG380.Enums.PulseFunction)">
+            <summary>
+            Устанавливает функцию импульсной модуляции (меандр, PRBS, внешний).
+            </summary>
+            <param name="function">Функция импульсной модуляции.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPulseFunctionAsync(StanfordResearchSystems.SG380.Enums.PulseFunction,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetPulseFunction(StanfordResearchSystems.SG380.Enums.PulseFunction)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPulseFunction">
+            <summary>
+            Возвращает текущую функцию импульсной модуляции.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPulseFunctionAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetPulseFunction"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPulsePeriod(System.Double)">
+            <summary>
+            Устанавливает период импульсной модуляции (секунды).
+            </summary>
+            <param name="seconds">Период в секундах.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPulsePeriodAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetPulsePeriod(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPulsePeriod">
+            <summary>
+            Возвращает период импульсной модуляции (секунды).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPulsePeriodAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetPulsePeriod"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPulseWidth(System.Double)">
+            <summary>
+            Устанавливает длительность импульса (секунды) для импульсной модуляции.
+            </summary>
+            <param name="seconds">Длительность в секундах.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPulseWidthAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetPulseWidth(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPulseWidth">
+            <summary>
+            Возвращает длительность импульса (секунды).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPulseWidthAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetPulseWidth"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPulseDutyFactor(System.Double)">
+            <summary>
+            Устанавливает коэффициент заполнения импульсной модуляции (проценты).
+            </summary>
+            <param name="percent">Коэффициент заполнения (0–100%).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPulseDutyFactorAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetPulseDutyFactor(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPulseDutyFactor">
+            <summary>
+            Возвращает коэффициент заполнения импульсной модуляции (проценты).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPulseDutyFactorAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetPulseDutyFactor"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPrbsLength(System.Int32)">
+            <summary>
+            Устанавливает длину псевдослучайной бинарной последовательности (PRBS) для шумовой импульсной модуляции (5–19 бит).
+            </summary>
+            <param name="bits">Длина последовательности в битах.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPrbsLengthAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetPrbsLength(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPrbsLength">
+            <summary>
+            Возвращает длину PRBS.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPrbsLengthAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetPrbsLength"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPrbsPeriod(System.Double)">
+            <summary>
+            Устанавливает период PRBS (секунды) для импульсной модуляции.
+            </summary>
+            <param name="seconds">Период в секундах.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetPrbsPeriodAsync(System.Double,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetPrbsPeriod(System.Double)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPrbsPeriod">
+            <summary>
+            Возвращает период PRBS (секунды).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetPrbsPeriodAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetPrbsPeriod"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetIqFunction(StanfordResearchSystems.SG380.Enums.IQFunction)">
+            <summary>
+            Устанавливает функцию I/Q модуляции (шум или внешний).
+            </summary>
+            <param name="function">Функция I/Q модуляции.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetIqFunctionAsync(StanfordResearchSystems.SG380.Enums.IQFunction,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetIqFunction(StanfordResearchSystems.SG380.Enums.IQFunction)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetIqFunction">
+            <summary>
+            Возвращает текущую функцию I/Q модуляции.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetIqFunctionAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetIqFunction"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationCoupling(StanfordResearchSystems.SG380.Enums.InputCoupling)">
+            <summary>
+            Устанавливает связь внешнего входа модуляции (DC или AC).
+            </summary>
+            <param name="coupling">DC – постоянная связь, AC – через конденсатор (4 Гц).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationCouplingAsync(StanfordResearchSystems.SG380.Enums.InputCoupling,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetModulationCoupling(StanfordResearchSystems.SG380.Enums.InputCoupling)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationCoupling">
+            <summary>
+            Возвращает текущий режим связи внешнего входа модуляции.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationCouplingAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetModulationCoupling"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.CreateList(System.Int32)">
+            <summary>
+            Создаёт список состояний указанного размера. Возвращает 1 при успехе, иначе 0.
+            </summary>
+            <param name="size">Размер списка.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.CreateListAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.CreateList(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.DeleteList">
+            <summary>
+            Удаляет текущий список и освобождает память.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.DeleteListAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.DeleteList"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableList(System.Boolean)">
+            <summary>
+            Включает или отключает режим списка.
+            </summary>
+            <param name="enable">true – включить, false – отключить.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.EnableListAsync(System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.EnableList(System.Boolean)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsListEnabled">
+            <summary>
+            Возвращает состояние режима списка.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsListEnabledAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.IsListEnabled"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetListIndex(System.Int32)">
+            <summary>
+            Устанавливает индекс текущей точки списка.
+            </summary>
+            <param name="index">Номер точки (0…размер‑1).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetListIndexAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetListIndex(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetListIndex">
+            <summary>
+            Возвращает текущий индекс списка.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetListIndexAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetListIndex"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetListPoint(System.Int32,StanfordResearchSystems.SG380.Models.ListState)">
+            <summary>
+            Записывает состояние в заданную точку списка.
+            </summary>
+            <param name="index">Индекс точки.</param>
+            <param name="state">Состояние (для неизменяемых параметров указывать null).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetListPointAsync(System.Int32,StanfordResearchSystems.SG380.Models.ListState,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetListPoint(System.Int32,StanfordResearchSystems.SG380.Models.ListState)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetListPoint(System.Int32)">
+            <summary>
+            Возвращает состояние из заданной точки списка.
+            </summary>
+            <param name="index">Индекс точки.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetListPointAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetListPoint(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.ResetList">
+            <summary>
+            Сбрасывает индекс списка в 0.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.ResetListAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.ResetList"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetListSize">
+            <summary>
+            Возвращает размер текущего списка.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetListSizeAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetListSize"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetDisplay(System.Boolean)">
+            <summary>
+            Включает или отключает фронтальный дисплей.
+            </summary>
+            <param name="on">true – включить, false – отключить.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetDisplayAsync(System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetDisplay(System.Boolean)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsDisplayOn">
+            <summary>
+            Возвращает состояние фронтального дисплея.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsDisplayOnAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.IsDisplayOn"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetInstrumentStatusEnable(System.Int32)">
+            <summary>
+            Устанавливает маску регистра состояния прибора (INSE).
+            </summary>
+            <param name="mask">Битовая маска.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetInstrumentStatusEnableAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetInstrumentStatusEnable(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetInstrumentStatusEnable">
+            <summary>
+            Возвращает текущую маску INSE.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetInstrumentStatusEnableAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetInstrumentStatusEnable"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetInstrumentStatusRegister">
+            <summary>
+            Возвращает и очищает регистр состояния прибора (INSR).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetInstrumentStatusRegisterAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetInstrumentStatusRegister"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetLastErrors">
+            <summary>
+            Возвращает список последних ошибок.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetLastErrorsAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetLastErrors"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetInstalledOptions(System.Int32)">
+            <summary>
+            Возвращает наличие установленной опции (1 – установлена, 0 – нет).
+            </summary>
+            <param name="optionId">Номер опции (1–4).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetInstalledOptionsAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetInstalledOptions(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsOutputOverRange(System.Int32)">
+            <summary>
+            Проверяет перегрузку выхода.
+            </summary>
+            <param name="outputId">Идентификатор выхода (0 – BNC, 1 – Type‑N, 2 – часы, 3 – удвоитель).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.IsOutputOverRangeAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.IsOutputOverRange(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetRfBlockTemperature">
+            <summary>
+            Возвращает температуру RF-блока в градусах Цельсия.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetRfBlockTemperatureAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetRfBlockTemperature"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetTimebaseInfo">
+            <summary>
+            Возвращает информацию о установленном опорном генераторе (OCXO или рубидий).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetTimebaseInfoAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetTimebaseInfo"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetEthernetMacAddress">
+            <summary>
+            Возвращает MAC-адрес Ethernet-интерфейса.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetEthernetMacAddressAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetEthernetMacAddress"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetEthernetPhy(System.Int32)">
+            <summary>
+            Устанавливает скорость физического уровня Ethernet (10 или 100 Мбит/с).
+            </summary>
+            <param name="speed">Скорость: 10 или 100.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetEthernetPhyAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetEthernetPhy(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetEthernetPhy">
+            <summary>
+            Возвращает текущую настройку скорости Ethernet.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetEthernetPhyAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetEthernetPhy"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetInterfaceConfiguration(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Настраивает интерфейс (GPIB, RS‑232, LAN).
+            </summary>
+            <param name="iface">0 – RS‑232, 1 – GPIB, 2 – LAN.</param>
+            <param name="enable">1 – включить, 0 – отключить.</param>
+            <param name="param">Дополнительный параметр (адрес GPIB, скорость RS‑232).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetInterfaceConfigurationAsync(System.Int32,System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetInterfaceConfiguration(System.Int32,System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetInterfaceConfiguration(System.Int32)">
+            <summary>
+            Возвращает текущую конфигурацию интерфейса.
+            </summary>
+            <param name="iface">0 – RS‑232, 1 – GPIB, 2 – LAN.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetInterfaceConfigurationAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetInterfaceConfiguration(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.ResetInterface(System.Int32)">
+            <summary>
+            Сбрасывает указанный интерфейс (RS‑232, GPIB, LAN).
+            </summary>
+            <param name="iface">0 – RS‑232, 1 – GPIB, 2 – LAN.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.ResetInterfaceAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.ResetInterface(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetActiveIpConfiguration(System.Int32)">
+            <summary>
+            Возвращает активную TCP/IP конфигурацию (ссылка, IP, маска, шлюз).
+            </summary>
+            <param name="param">0 – состояние соединения, 1 – IP-адрес, 2 – маска, 3 – шлюз.</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GetActiveIpConfigurationAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GetActiveIpConfiguration(System.Int32)"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GoLocal">
+            <summary>
+            Переводит прибор в локальный режим (включает переднюю панель).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GoLocalAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GoLocal"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.RequestLock">
+            <summary>
+            Запрашивает блокировку прибора для монопольного управления через данный интерфейс.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.RequestLockAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.RequestLock"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GoRemote">
+            <summary>
+            Переводит прибор в удалённый режим (блокирует переднюю панель).
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.GoRemoteAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.GoRemote"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.ReleaseLock">
+            <summary>
+            Освобождает блокировку прибора, полученную ранее через RequestLock.
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.ReleaseLockAsync(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.ReleaseLock"/>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetInterfaceTerminator(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Устанавливает символы завершения ответов прибора (последовательность байтов).
+            </summary>
+            <param name="term1">Первый байт (обычно 13 – CR).</param>
+            <param name="term2">Второй байт (обычно 10 – LF).</param>
+            <param name="term3">Третий байт (0 – не используется).</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Sg380Client.SetInterfaceTerminatorAsync(System.Int32,System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:StanfordResearchSystems.SG380.Sg380Client.SetInterfaceTerminator(System.Int32,System.Int32,System.Int32)"/>
+        </member>
+        <member name="T:StanfordResearchSystems.SG380.Utilities.Sg380Helpers">
+            <summary>
+            Helper
+            </summary>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Utilities.Sg380Helpers.Ping(System.String,System.Int32,System.Int32)">
+            <summary>
+            Проверяет доступность генератора по указанному IP и порту (синхронно).
+            </summary>
+            <param name="ipAddress">IP-адрес</param>
+            <param name="port">TCP-порт (по умолчанию 5025)</param>
+            <param name="timeoutMs">Таймаут в миллисекундах</param>
+        </member>
+        <member name="M:StanfordResearchSystems.SG380.Utilities.Sg380Helpers.PingAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            Проверяет доступность генератора по указанному IP и порту (асинхронно).
+            </summary>
+            <param name="ipAddress">IP-адрес</param>
+            <param name="port">TCP-порт (по умолчанию 5025)</param>
+            <param name="timeoutMs">Таймаут в миллисекундах</param>
+        </member>
+    </members>
+</doc>

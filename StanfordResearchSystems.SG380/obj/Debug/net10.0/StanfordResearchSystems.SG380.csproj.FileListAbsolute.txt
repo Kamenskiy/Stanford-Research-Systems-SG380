@@ -1,0 +1,13 @@
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\bin\Debug\net10.0\StanfordResearchSystems.SG380.deps.json
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\bin\Debug\net10.0\StanfordResearchSystems.SG380.dll
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\bin\Debug\net10.0\StanfordResearchSystems.SG380.pdb
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\bin\Debug\net10.0\StanfordResearchSystems.SG380.xml
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\obj\Debug\net10.0\StanfordResearchSystems.SG380.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\obj\Debug\net10.0\StanfordResearchSystems.SG380.AssemblyInfoInputs.cache
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\obj\Debug\net10.0\StanfordResearchSystems.SG380.AssemblyInfo.cs
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\obj\Debug\net10.0\StanfordResearchSystems.SG380.csproj.CoreCompileInputs.cache
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\obj\Debug\net10.0\StanfordResearchSystems.SG380.dll
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\obj\Debug\net10.0\refint\StanfordResearchSystems.SG380.dll
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\obj\Debug\net10.0\StanfordResearchSystems.SG380.xml
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\obj\Debug\net10.0\StanfordResearchSystems.SG380.pdb
+C:\Users\Alex\source\repos\StanfordResearchSystems.SG380\StanfordResearchSystems.SG380\obj\Debug\net10.0\ref\StanfordResearchSystems.SG380.dll
